@@ -1,0 +1,44 @@
+.SideBar{
+    position: absolute;
+    z-index: 99;
+    width: 360px;
+    height: 100vh;
+    background-color: white;
+}
+
+.SideBar-logo{
+    position: absolute;
+    top: -50px;
+    right: -32px;
+    grid-area: vacio;
+
+}
+
+.SideBar-subContainer{
+    grid-area: buttons;
+}
+
+
+.SideBar-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 200px;
+    grid-template-areas: 
+        "."
+      "buttons";
+  }
+.SideBar-button{
+    display: flex;
+    justify-content: center;
+}
+.button-primary{
+
+    width: 200px;
+    height: 50px;
+    margin: 20px;
+    border: 1px solid #8080804a;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+
+  }

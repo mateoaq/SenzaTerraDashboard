@@ -1,0 +1,46 @@
+.Card{
+    width: 200px;
+    margin: 20px;
+}
+.Card-title{
+    text-align: center;
+    background-color: #F4F4F4;
+    border: 1px solid black;
+    box-shadow: 10px 10px 7px -7px rgb(0 0 0 / 21%);
+}
+
+.Card-title div h1{
+    font-size: 20px;
+}
+
+.Card-data{
+    background-color: #F4F4F4;
+    margin-top: 15px;
+    padding: 20px 0;
+    box-shadow: 10px 11px 7px -7px  rgba(0,0,0,0.21);
+    /* border: 1px solid black; */
+}
+
+.Card-info{
+    display: flex;
+    justify-content: center;
+
+}
+
+.Card-info-bomba{
+    text-align: center;
+}
+
+.punto-verde{
+    background-color: #75B557;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+
+.punto-rojo{
+    background-color: #B55757;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}

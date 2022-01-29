@@ -1,0 +1,25 @@
+.Nav-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px;
+    grid-template-areas: 
+      "vacio temp temp temp";
+  }
+
+.vacio{
+    grid-area: vacio;
+}
+.temp{
+    grid-area: temp;
+    display: flex;
+    justify-content: center;
+}
+.textCenter{
+    align-self: center;
+}
+
+h3{
+    margin: 0 10px;
+    padding: 0;
+    align-content: center;
+}

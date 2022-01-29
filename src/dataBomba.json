@@ -1,0 +1,22 @@
+[
+    {
+        "nombre": "Bomba 1",
+        "activa": true,
+        "inicio": "5h 30m"
+    },
+    {
+        "nombre": "Bomba 2",
+        "activa": false,
+        "inicio": "2h 30m"
+    },
+    {
+        "nombre": "Bomba 3",
+        "activa": true,
+        "inicio": "5h 10m"
+    },
+    {
+        "nombre": "Bomba 4",
+        "activa": true,
+        "inicio": "5h 30m"
+    }
+]
