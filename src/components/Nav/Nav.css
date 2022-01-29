@@ -23,3 +23,15 @@ h3{
     padding: 0;
     align-content: center;
 }
+
+
+@media (max-width: 425px){
+
+    .Nav-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 50px;
+        grid-template-areas: 
+          "temp temp temp";
+      }
+}

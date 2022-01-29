@@ -9,13 +9,13 @@ export const Nav = (props) => {
                 </div>
                 <div className='temp'>
                     <div className='textCenter'>
-                        <h3>Temperatura actual: {props.act}°C</h3>
+                        <h3>Temperatura actual: {props.act ?? 'Error'}°C</h3>
                     </div>
                     <div className='textCenter'>
-                        <h3>Max: {props.max}°C</h3>
+                        <h3>Max: {props.max ?? 'Error'}°C</h3>
                     </div>
                     <div className='textCenter'>
-                        <h3>Min: {props.min}°C</h3>
+                        <h3>Min: {props.min ?? 'Error'}°C</h3>
                     </div>
                 </div>
             </div>

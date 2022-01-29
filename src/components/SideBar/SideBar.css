@@ -42,3 +42,10 @@
     cursor: pointer;
 
   }
+
+@media (max-width: 425px){
+
+    .SideBar{
+        display: none;
+    }
+}

@@ -3,3 +3,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+@media (max-width: 425px){
+
+  .Data-container{
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
