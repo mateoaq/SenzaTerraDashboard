@@ -24,10 +24,10 @@ export const CardBomba = (props) => {
                     <hr />
                     <div className='Card-info-bomba'>
                         <div className='Card-info-name'>
-                            <h3>Tiempo Activo</h3>
+                            <h3>Caudal Actual</h3>
                         </div>
                         <div className='Card-info-value'>
-                            <h3>{props.inicio}</h3>
+                            <h3>{props.caudal} l/h</h3>
                         </div>
                     </div>
                 </div>
