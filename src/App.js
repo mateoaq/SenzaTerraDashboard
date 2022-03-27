@@ -5,79 +5,72 @@ import './App.css';
 import { SideBar } from './components/SideBar/SideBar';
 import { Card } from './components/Card/Card';
 import { CardBomba } from './components/CardBomba/CardBomba';
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, onValue, get, child } from "firebase/database";
+import { getBombas } from './db/getBombas';
+import { getTemp } from './db/getTemp';
+import { getHistoryTemp } from './db/getHistory';
+import { picosTemperatura } from './functions/picosTemperatura';
 
 function App() {
 
-  const [bombs, setBombs] = useState([])
-  const [tanques, setTanques] = useState([])
-  const [temp, setTemp] = useState([])
+  const [bombs, setBombs] = useState([]);
+  const [tanques, setTanques] = useState([]);
+  const [temp, setTemp] = useState([]);
+  const [historyTempArray, setHistoryTempArray] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [maxTemp, setMaxTemp] = useState(0);
+  const [minTemp, setMinTemp] = useState(0);
 
-  const dbRef = ref(getDatabase());
+  const db = getDatabase();
+  const isActiveBomb = ref(db, 'bombas/');
+  const actualTemp = ref(db, 'temperatura/');
+  const historyTemp = ref(db, 'history/temp/');
 
   useEffect(() => {
-    //Bombas
-    get(child(dbRef, `bombas/`)).then((snapshot) => {
-      if (snapshot.exists()) {
-        setBombs(snapshot.val())
-        console.log('bombs', bombs)
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
-
-    //Tanques
-    get(child(dbRef, `tanques/`)).then((snapshot) => {
-      if (snapshot.exists()) {
-        setTanques(snapshot.val())
-        console.log('tanques', tanques)
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
-
-    //Temperatura
-    get(child(dbRef, `Clima/`)).then((snapshot) => {
-      if (snapshot.exists()) {
-        setTemp(snapshot.val().Temperatura)
-        console.log('temp', temp)
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
+    getBombas(setLoading, isActiveBomb, get, setBombs);
+    getTemp(actualTemp, get, setTemp);
+    getHistoryTemp(historyTemp, get, setHistoryTempArray)
   }, [])
 
+  // useEffect(() => {
+  //   picosTemperatura(historyTempArray, setMaxTemp, setMinTemp);
+  // }, [historyTempArray])
 
   return (
     <div className="App">
-      <Nav act={temp.Temperatura} max={0} min={0} />
+      <Nav act={temp} max={maxTemp} min={minTemp} />
       <SideBar />
-      <div className="Data-container">
-        {tanques.length > 0 ? tanques.map(({ nombre, CE, pH, Nivel }) => {
-          console.log('bombs', bombs)
-          return (
-            <Card key={Math.random() * 90} nombre={nombre} ce={CE.CE} pH={pH.pH} nivel={Nivel} />
-          )
-        })
-          :
-          <h1>No hay Tanques </h1>
-        }
-        {bombs.length > 0 ? bombs.map(({ nombre, activa, inicio }) => {
-          return (
-            <CardBomba key={nombre} nombre={nombre} activa={activa > 0 ? true : false} inicio={inicio} />
-          )
-        })
-          :
-          <h1>No hay Bombas</h1>
-        }
 
-      </div>
+      {loading ?
+
+        <div className="Data-container">
+          <h3>Cargando....</h3>
+        </div>
+
+        :
+
+        <div className="Data-container">
+          {/* {tanques.length > 0 ? tanques.map(({ nombre, CE, pH, Nivel }) => {
+            return (
+              <Card key={Math.random() * 90} nombre={nombre} ce={CE.CE} pH={pH.pH} nivel={Nivel} />
+            )
+          })
+            :
+            <h1>No hay Tanques </h1>
+          } */}
+          {bombs.length > 0 ? bombs.map(({ nombre, activa, caudal }) => {
+            debugger
+            return (
+              <CardBomba key={nombre} nombre={nombre} activa={activa > 0 ? true : false} caudal={caudal} />
+            )
+          })
+            :
+            <h1>No hay Bombas</h1>
+          }
+
+        </div>
+
+      }
     </div>
   );
 }
