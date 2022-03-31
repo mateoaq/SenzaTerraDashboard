@@ -9,6 +9,7 @@ import { getDatabase, ref, onValue, get, child } from "firebase/database";
 import { getBombas } from './db/getBombas';
 import { getTemp } from './db/getTemp';
 import { getHistoryTemp } from './db/getHistory';
+import { getHumedad } from './db/getHum';
 import { picosTemperatura } from './functions/picosTemperatura';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [bombs, setBombs] = useState([]);
   const [tanques, setTanques] = useState([]);
   const [temp, setTemp] = useState([]);
+  const [humedad, setHum] = useState([]);
   const [historyTempArray, setHistoryTempArray] = useState([]);
   const [loading, setLoading] = useState(false);
   const [maxTemp, setMaxTemp] = useState(0);
@@ -24,11 +26,13 @@ function App() {
   const db = getDatabase();
   const isActiveBomb = ref(db, 'bombas/');
   const actualTemp = ref(db, 'temperatura/');
+  const actualHum = ref(db, 'humedad/');
   const historyTemp = ref(db, 'history/temp/');
 
   useEffect(() => {
     getBombas(setLoading, isActiveBomb, get, setBombs);
     getTemp(actualTemp, get, setTemp);
+    getHumedad(actualHum, get, setHum);
     getHistoryTemp(historyTemp, get, setHistoryTempArray)
   }, [])
 
@@ -38,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav act={temp} max={maxTemp} min={minTemp} />
+      <Nav act={temp} hum={humedad} max={maxTemp} min={minTemp} />
       <SideBar />
 
       {loading ?
@@ -58,10 +62,9 @@ function App() {
             :
             <h1>No hay Tanques </h1>
           } */}
-          {bombs.length > 0 ? bombs.map(({ nombre, activa, caudal }) => {
-            debugger
+          {bombs.length > 0 ? bombs.map(({ nombre, activa, caudal, description }) => {
             return (
-              <CardBomba key={nombre} nombre={nombre} activa={activa > 0 ? true : false} caudal={caudal} />
+              <CardBomba key={nombre} nombre={nombre} activa={activa > 0 ? true : false} caudal={caudal} description={description} />
             )
           })
             :

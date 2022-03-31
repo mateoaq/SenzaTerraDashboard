@@ -44,3 +44,18 @@
     height: 20px;
     border-radius: 100%;
 }
+
+.Card-moreInfo{
+    text-align: end;
+    padding-right: 10px;
+}
+.Card-plus{
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.Card-description{
+    padding-left: 10px;
+    font-size: 0.9rem;
+    text-align: left;
+}

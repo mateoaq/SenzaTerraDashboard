@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CardBomba.css'
 
 export const CardBomba = (props) => {
+    const [open, setOpen] = useState(false);
+
+    function handleClick() {
+        setOpen(!open)
+    }
     return (
         <div className='Card'>
             <div className='Card-title'>
@@ -29,9 +34,15 @@ export const CardBomba = (props) => {
                         <div className='Card-info-value'>
                             <h3>{props.caudal} l/h</h3>
                         </div>
+                        <div className='Card-moreInfo' onClick={() => handleClick()}>
+                            <p className='Card-plus'>+</p>
+                            <div style={open ? { display: "block" } : { display: "none" }}>
+                                <p className='Card-description'>{props.description}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
