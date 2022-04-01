@@ -25,10 +25,11 @@ h3{
 }
 
 
-@media (max-width: 425px){
+@media (max-width: 720px){
 
     .Nav-container {
         display: grid;
+        margin-top: 10px;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 50px;
         grid-template-areas: 
