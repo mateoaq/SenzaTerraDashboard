@@ -1,6 +1,6 @@
 import React from 'react';
 import './Nav.css';
-
+import ultimaActualizacion from '../../functions/ultimaActualizacion';
 export const Nav = (props) => {
     return (
         <div className='Nav'>
@@ -19,6 +19,11 @@ export const Nav = (props) => {
                     </div>
                     <div className='textCenter'>
                         <h3>Min: {props.min ?? 'Error'}°C</h3>
+                    </div>
+                </div>
+                <div className='rep'>
+                    <div className='textCenter'>
+                        <h3>Última actualización: {ultimaActualizacion(props.tempArray)}</h3>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,11 @@
 .Nav-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 50px;
+    grid-template-rows: 50px 50px;
     grid-template-areas: 
-      "vacio temp temp temp";
+      "vacio temp temp temp"
+      "vacio rep rep rep";
+
   }
 
 .vacio{
@@ -11,6 +13,11 @@
 }
 .temp{
     grid-area: temp;
+    display: flex;
+    justify-content: center;
+}
+.rep{
+    grid-area: rep;
     display: flex;
     justify-content: center;
 }
@@ -31,8 +38,10 @@ h3{
         display: grid;
         margin-top: 10px;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 50px;
+        grid-template-rows: 50px 50px;
         grid-template-areas: 
-          "temp temp temp";
+          "temp temp temp"
+          "rep rep rep";
+
       }
 }

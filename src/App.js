@@ -18,7 +18,7 @@ function App() {
   const [tanques, setTanques] = useState([]);
   const [temp, setTemp] = useState([]);
   const [humedad, setHum] = useState([]);
-  const [historyTempArray, setHistoryTempArray] = useState([]);
+  const [historyTempArray, setHistoryTempArray] = useState();
   const [loading, setLoading] = useState(false);
   const [maxTemp, setMaxTemp] = useState(0);
   const [minTemp, setMinTemp] = useState(0);
@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav act={temp} hum={humedad} max={maxTemp} min={minTemp} />
+      <Nav act={temp} hum={humedad} max={maxTemp} min={minTemp} tempArray={historyTempArray} />
       <SideBar />
 
       {loading ?
