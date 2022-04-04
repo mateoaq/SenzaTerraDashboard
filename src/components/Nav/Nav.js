@@ -14,12 +14,12 @@ export const Nav = (props) => {
                     <div className='textCenter'>
                         <h3>Humedad actual: {props.hum ?? 'Error'}%</h3>
                     </div>
-                    <div className='textCenter'>
+                    {/* <div className='textCenter'>
                         <h3>Max: {props.max ?? 'Error'}°C</h3>
                     </div>
                     <div className='textCenter'>
                         <h3>Min: {props.min ?? 'Error'}°C</h3>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='rep'>
                     <div className='textCenter'>
